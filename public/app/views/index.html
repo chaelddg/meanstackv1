@@ -14,16 +14,21 @@
   <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
-<body ng-app="mainApp">
+<body ng-app="mainApp" ng-controller="mainController as main">
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a ui-sref="home" id="logo-container" class="brand-logo">CRM</a>
+      <a ng-if="!main.loggedIn" href="/" id="logo-container" class="brand-logo">CRM</a>
+      <a ng-if="main.loggedIn" href="/users" id="logo-container" class="brand-logo">CRM</a>
       <ul class="right hide-on-med-and-down">
-        <li><a ui-sref="login">Login</a></li>
+        <li ng-if="main.loggedIn"><a href="#">{{ main.user.name }}</a></li>
+        <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+        <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a ui-sref="login">Login</a></li>
+        <li ng-if="main.loggedIn"><a href="#">{{ main.user.name }}</a></li>
+        <li ng-if="!main.loggedIn"><a href="/login">Login</a></li>
+        <li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>

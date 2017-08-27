@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="col s12">
+  <form class="col s12" ng-submit="login.doLogin()">
     <div class="card">
       <div class="card-content">
         <div class="row">
@@ -9,23 +9,48 @@
         </div>
         <div class="row">
           <div class="input-field col s6 offset-s3">
-            <input id="username" type="text" class="validate">
+            <input id="username" type="text" class="validate" ng-model="login.loginData.username">
             <label for="username">Username</label>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s6 offset-s3">
-            <input id="password" type="password" class="validate">
+            <input id="password" type="password" class="validate" ng-model="login.loginData.password">
             <label for="password">Password</label>
           </div>
         </div>
         <div class="row">
+
           <div class="col s6 offset-s3">
-            <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-          </button>
+            <button class="btn waves-effect waves-light light-blue lighten-1" 
+                    type="submit" name="action">
+                    <span>Submit<i class="material-icons right">send</i></span>
+                    
+            </button>
+            <div ng-if="login.processing" class="preloader-wrapper small active login-loader">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div ng-if="login.error" class="row">
+          <div class="col s6 offset-s3">
+            <div class="card-panel red">
+              <span class="white-text">
+                {{ login.error }}
+              </span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </form>

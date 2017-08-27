@@ -19,5 +19,8 @@ module.exports = function(express) {
     .put('/users/:user_id', UserController.updateUser)
     .delete('/users/:user_id', UserController.deleteUser);
 
+  apiRouter
+    .get('/me', UserController.me);
+
   return apiRouter;
 };
