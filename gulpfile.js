@@ -6,7 +6,9 @@ const rename        = require('gulp-rename');
 const concat        = require('gulp-concat');
 const uglify        = require('gulp-uglify');
 const ngAnnotate    = require('gulp-ng-annotate');
+const jshint        = require('gulp-jshint');
 const nodemon       = require('gulp-nodemon');
+const babel         = require('gulp-babel');
 const browserSync   = require('browser-sync').create();
 
 gulp.task('css', function() {
@@ -41,6 +43,9 @@ gulp.task('angular', function() {
       'public/app/*.js', 
       'public/app/**/*.js'
     ])
+    .pipe(babel())
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
     .pipe(ngAnnotate())
     .pipe(concat('app.js'))
     .pipe(uglify())
