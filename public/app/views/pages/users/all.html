@@ -1,19 +1,37 @@
-<div>
-  <table class="bordered" ng-show="user.users">
-    <thead>
-      <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Actions</th>
-      </tr>
-    </thead>
+<div class="col s12">
+  <div class="card">
+    <div class="card-content">
+      <div>
+        <a href="/users/create" class="waves-effect waves-light light-blue lighten-1 btn">
+          Create User
+        </a>
+      </div>
+      <table class="bordered" ng-show="user.users">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <tr ng-repeat="person in user.users">
-        <td>{{ person.name }}</td>
-        <td>{{ person.username }}</td>
-        <td>$0.87</td>
-      </tr>
-    </tbody>
-  </table>
+        <tbody>
+          <tr ng-repeat="person in user.users">
+            <td>{{ person.name }}</td>
+            <td>{{ person.username }}</td>
+            <td>
+              <a href="/users/{{ person._id }}" 
+                 class="waves-effect waves-light btn-small" title="Edit">
+                <i class="material-icons grey-text">edit</i>
+              </a>
+              <a href="#" ng-click="user.deleteUser(person._id)" 
+                 class="waves-effect waves-light btn-small" title="Delete">
+                <i class="material-icons red-text">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

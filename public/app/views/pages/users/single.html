@@ -1,0 +1,55 @@
+<div class="row">
+  <form class="col s12" ng-submit="user.saveUser()">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s6 offset-s3">
+            <h4 ng-if="user.type == 'create'">Create User</h4>
+            <h4 ng-if="user.type == 'edit'">Edit User</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 offset-s3">
+            <input id="name" type="text" class="validate" ng-model="user.userData.name">
+            <label for="name">Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 offset-s3">
+            <input id="username" type="text" class="validate" ng-model="user.userData.username">
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6 offset-s3">
+            <input id="password" type="password" class="validate" ng-model="user.userData.password">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="col s6 offset-s3">
+            <button class="btn waves-effect waves-light light-blue lighten-1" 
+                    type="submit" name="action">
+                    <span>Submit<i class="material-icons right">send</i></span>
+                    
+            </button>
+            <div ng-if="user.processing" class="preloader-wrapper small active login-loader">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div><div class="gap-patch">
+                  <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+ 

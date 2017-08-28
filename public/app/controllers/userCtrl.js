@@ -49,13 +49,13 @@ angular.module('userCtrl', ['userService'])
 
 })
 
-.controller('userEditController', function ($routeParams, User) {
+.controller('userEditController', function ($stateParams, User) {
 
   const vm = this;
 
   vm.type = 'edit';
 
-  User.get($routeParams.user_id)
+  User.get($stateParams.user_id)
     .then(data => {
       vm.userData = data.data;
     });
@@ -64,7 +64,7 @@ angular.module('userCtrl', ['userService'])
     vm.processing = true;
     vm.message = '';
 
-    User.update($routeParams.user_id, vm.userData)
+    User.update($stateParams.user_id, vm.userData)
       .then(data => {
         vm.processing = false;
 
